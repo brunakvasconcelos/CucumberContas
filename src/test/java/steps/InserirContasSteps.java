@@ -54,21 +54,27 @@ public void selecionoAdicionar() throws Throwable {
 
 @Quando("^informo a conta \"([^\"]*)\"$")
 public void informoAConta(String arg1) throws Throwable {
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException();
+    driver.findElement(By.id("nome")).sendKeys(arg1);
 }
 
 @Quando("^seleciono Salvar$")
 public void selecionoSalvar() throws Throwable {
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException();
+    driver.findElement(By.tagName("button")).click();
+    
 }
 
 @Então("^a conta é inserida com sucesso$")
 public void aContaÉInseridaComSucesso() throws Throwable {
-    // Write code here that turns the phrase above into concrete actions
-    throw new PendingException();
+   String texto = driver.findElement(By.xpath("div[@class='alert alert-success']")).getText();
+   Assert.assertEquals("Conta adicionada com sucesso!", texto);
+   
+		   
 }
 
+@Então("^sou notificado que o nome da conta é obrigatório$")
+public void sou_notificado_que_o_nome_da_conta_é_obrigatório() throws Throwable {
+	String texto = driver.findElement(By.xpath("div[@class='alert alert-danger']")).getText();
+	   Assert.assertEquals("Informe o nome da conta", texto);
 
+}
 }

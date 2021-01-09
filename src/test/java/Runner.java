@@ -11,7 +11,9 @@ tags = {"~@ignore"},
 plugin = "pretty",
 monochrome = true,
 snippets =SnippetType.CAMELCASE,
-dryRun=false)
+dryRun=false,
+strict=false
+		)
 
 public class Runner {
 	
